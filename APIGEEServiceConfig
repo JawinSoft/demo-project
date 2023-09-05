@@ -124,4 +124,43 @@ public class APIGEEServiceImpl implements APIGEEService {
 		return jsonResponse;
 	}
 
+/**
+     * Method to set json response with data from API
+     *
+     * @param jsonResponse json response
+     * @param httpResponse http response
+     * @return jsonResponse json response
+     * @throws IOException IO Exception
+     */
+    public static JsonObject setJsonResponse(JsonObject jsonResponse, HttpResponse httpResponse) throws IOException {
+        String responseString = EntityUtils.toString(httpResponse.getEntity(), "UTF-8");
+        jsonResponse.addProperty(SupplierPortalConstants.RESULT, responseString);
+        jsonResponse.addProperty(SupplierPortalConstants.STATUS, httpResponse.getStatusLine().getStatusCode());
+        return jsonResponse;
+    }
+
+public static final String STATUS_CODE = "status_code";
+
+    public static final String ACCEPT = "Accept";
+    
+    public static final String AUTHORIZATION = "Authorization";
+    
+    public static final String APPLICATION_JSON = "application/json";
+    
+    public static final String GRANT_TYPE = "grant_type";
+    
+    public static final String TOKEN = "token";
+    
+    public static final String BASIC  = "Basic ";
+    
+    public static final String GRANT_TYPE_VALUE  = "urn:ietf:params:oauth:grant-type:token-exchange";
+    
+    public static final String UTF_8  = "UTF-8";
+    
+    public static final String CONTENT_TYPE = "Content-Type";
+    
+    public static final String APPLICATION_URL_ENCODED = "application/x-www-form-urlencoded";
+    
+    public static final String AUTH_TOKEN = "auth-token";
+
 }
